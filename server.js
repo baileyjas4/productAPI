@@ -6,8 +6,15 @@ const productRoutes = require('./routes/productRoutes');
 
 dotenv.config();
 
+const app = express();
 
+//MIDDLEWARE
+app.use(express.json());
 
+//ROUTES- INDUCES
+// Mount product routes
+// All routes inside productRoutes will start with /api/products
+app.use('/api/products', productRoutes);
 
 //DATABASE CONNECTION 
 connectDB().then(() => {
@@ -18,15 +25,6 @@ connectDB().then(() => {
 //DATABASE CONNECTION error/succes
 //Define callback function for various events
 
-
-//MIDDLEWARE
-app.use(express.json());
-
-//ROUTES- INDUCES
-// Mount product routes
-// All routes inside productRoutes will start with /api/products
-app.use('/api/products', productRoutes);
-
 //INDEX
 
 
@@ -35,7 +33,7 @@ app.use('/api/products', productRoutes);
 //D
 //U
 //CREATE 
-const app = express();
+
 
 //E
 //S
